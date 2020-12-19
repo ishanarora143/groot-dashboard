@@ -1,25 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import React ,{useState} from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,Redirect,
+  Link
+} from "react-router-dom";
+import Home from './views/home';
+import Login from './views/login'
+// import Demo from './views/demo'
+import Layout from './layouts/mainLayout';
+import {connect} from 'react-redux'
+import { store } from './store';
 
-function App() {
+
+
+function App(props) {
+  console.log(Home())
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          <Route to="/" component={Layout}/>
+        </Switch>
+      </Router>
     </div>
   );
 }
 
-export default App;
+export default connect((state)=>({auth:state.login.auth}))(App);

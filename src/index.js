@@ -3,11 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from "react-redux";
+import {store} from "./store";
+
+console.log(store)
+let auth = localStorage.getItem('authentication')
+console.log("app auth",typeof(auth))
+if(auth=="true"){
+  console.log(store)
+  let user = {name:'ishan',age:19}
+  store.dispatch({type:"LOGIN_SUCCESS",payload:{
+    user
+  }})
+}
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
