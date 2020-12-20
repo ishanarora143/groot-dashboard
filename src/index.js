@@ -38,10 +38,7 @@ else{
     if (response.status === 200) return response.json();
     throw new Error("failed to authenticate user");
   })
-  .catch(error => {
-    console.log(error)
-  })
-  .then(responseJson => {
+  .then((responseJson)=>{
 
     console.log(responseJson)
     const {token} = responseJson
@@ -56,7 +53,12 @@ else{
         user:decoded
       }
     })
-    console.log("alpha",alpha)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+  .then(() => {
+
     ReactDOM.render(
       <Provider store={store}>
         <App />

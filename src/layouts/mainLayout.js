@@ -6,7 +6,8 @@ import {
     Redirect,
     Link,withRouter
   } from "react-router-dom";
-  import AppBar from '../components/appbar'
+
+  import GrootLayout from './GrootLayout'
 
 
   import Login from '../views/login'
@@ -17,7 +18,7 @@ import Home from '../views/home';
 const PrivateRoute = ({path,auth,component,...rest})=>{
     console.log('auth valuue ==',auth)
     return(
-        <Route path={path} render={
+        <Route path={path}  render={
             (props)=>
                 auth?
                 React.createElement(component,props):
@@ -34,10 +35,9 @@ function Layout(props) {
     }, [])
     return (
         <div>
-            <AppBar />
                     <Route exact path="/" component={(Login)} />
-                    <Route exact path="/home" component={(Home) } />
-                    <PrivateRoute auth={props.auth} path = "/chats" component={(Chats)} />
+                    <PrivateRoute auth ={props.auth} path="/groot" component={GrootLayout } />
+                    {/* <PrivateRoute auth={props.auth} path = "/chats" component={(Chats)} /> */}
         </div>
     )
 }
