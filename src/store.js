@@ -11,7 +11,14 @@ const persistConfig = {
     whitelist: ['login'] // which reducer want to store
   };
 //   const pReducer = persistReducer(persistConfig, rootReducer);
-  const middleware = applyMiddleware(thunk);
+  const logger = (store)=>(next)=>(action)=>{
+    console.log("prev",store.getState())
+    let result  = next(action)
+    console.log("after",store.getState())
+    return result
+  }
+  const middleware = applyMiddleware(thunk,logger);
+
   const store = createStore(rootReducer, middleware);
 //   const persistor = persistStore(store);
   export { store };

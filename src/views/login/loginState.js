@@ -8,7 +8,8 @@ const initialState = {
 };
 
 export const login = (email,password)=>(dispatch)=>{
-    dispatch(loginStart())
+    let alpha = dispatch(loginStart())
+    console.log("alpha",alpha)
     
     if(email == "eshanarora00001@gmail.com" && password == "9756650020"){
         setTimeout(()=>{

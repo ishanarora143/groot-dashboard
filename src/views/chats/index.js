@@ -11,6 +11,5 @@ function Chats(props) {
 }
 const mapStateToProps = (state)=>({
     auth:state.login.auth,
-    joker:state.login.joker
 })
 export default connect(mapStateToProps)(Chats)

@@ -35,13 +35,9 @@ function Layout(props) {
     return (
         <div>
             <AppBar />
-            {/* <Router> */}
-                {/* <Switch> */}
                     <Route exact path="/" component={(Login)} />
                     <Route exact path="/home" component={(Home) } />
                     <PrivateRoute auth={props.auth} path = "/chats" component={(Chats)} />
-                {/* </Switch> */}
-            {/* </Router> */}
         </div>
     )
 }
